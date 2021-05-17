@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  # 商品のコントローラー
   def index
     @products = Product.page(params[:page]).reverse_order
   end
