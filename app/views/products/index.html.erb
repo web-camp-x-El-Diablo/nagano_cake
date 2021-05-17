@@ -1,2 +1,27 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<!-- 顧客側の商品一覧画面 -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="margin-top: 30px;">
+      <h4>商品一覧</h4>
+      <table class="table">
+        <ul>
+          <% @products.each do |product| %>
+            <li>
+              画像
+            </li>
+            <li>
+              <%= product.name %>
+            </li>
+            <li>
+              ¥<%= product.price %>
+            </li>
+          <% end %>
+          </ul>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <%= paginate @products %>
+      </div>
+    </div>
+  </div>
+</div>
