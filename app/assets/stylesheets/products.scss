@@ -6,3 +6,18 @@
 .size {
   font-size: 2em;
 }
+
+.product {
+  display: flex;
+  margin: 30px auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_image {
+  margin: 0 auto;
+}
+
+.product_details {
+  margin: 0 auto;
+}
