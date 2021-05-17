@@ -1,2 +1,48 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<!-- 商品一覧画面　
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="margin-top: 30px;">
+      <div class="heading">
+        <h4>商品一覧</h4>
+      </div>
+      <i class="fas fa-plus-circle fa-pull-right size"></i>
+      <div class="table">
+        <table class='table table-hover table-inverse'>
+          <thead class="table-list">
+            <tr>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td>
+                  <%= product_id %>
+                </td>
+                <td>
+                  <%= product.name %>
+                </td>
+                <td>
+                  <%= product.price %>
+                </td>
+                <td>
+                  <%= product.genre.name %>
+                </td>
+                <td>
+                  <%= product.sales_status %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <div class="pagination">
+        <%= paginate @products %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
