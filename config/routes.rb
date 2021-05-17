@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "homes#top"
-  get "homes/about" => "homes#about", as: 'about'
+  get "/about" => "homes#about", as: 'about'
 
   # 店側のルーティング
   devise_scope :admin do
