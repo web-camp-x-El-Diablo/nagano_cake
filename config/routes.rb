@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/about" => "homes#about", as: 'about'
 
   # 店側のルーティング
+  devise_for :admins, skip: :all
   devise_scope :admin do
     get '/admin/sign_in' => "admin/sessions#new", as: :new_admin_session
     post '/admin/sign_in' => "admin/sessions#create", as: :admin_session
