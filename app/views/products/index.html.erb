@@ -10,7 +10,7 @@
               画像
             </li>
             <li>
-              <%= product.name %>
+              <%= link_to product.name, product_path(product) %>
             </li>
             <li>
               ¥<%= product.price %>
