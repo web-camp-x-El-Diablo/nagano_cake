@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/about" => "homes#about", as: 'about'
 
   # 店側のルーティング
+  devise_for :admins, skip: :all
   devise_scope :admin do
     get '/admin/sign_in' => "admin/sessions#new", as: :new_admin_session
     post '/admin/sign_in' => "admin/sessions#create", as: :admin_session
@@ -25,9 +26,8 @@ Rails.application.routes.draw do
   delete '/cart_products/destroy_all' => "cart_products#destroy_all"
   patch '/customers/withdraw' => "customers#withdraw"
   get '/customers/unsubscribe' => "customers#unsubscribe"
-  get 'customers/my_page' => 'costomers#show'
 
-  resource :customers, only: [:edit, :update]
+  resource :customers, only: [:edit, :update, :show]
   resources :products, only: [:index, :show]
   resources :cart_products, only: [:index, :update, :destroy, :create]
   resources :orders, only: [:index, :show, :new, :create]
