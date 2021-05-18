@@ -1,6 +1,6 @@
 
-<h1>配送先一覧 / 登録</h1>
-<%= form_with(model: @delivery, :url => {:controller => "deliveries"}) do |f| %>
+<h1>配送先登録 / 一覧</h1>
+<%= form_with(model: @delivery, :url => {:controller => "deliveries"}, local: true) do |f| %>
   <div class="form-group has-icon"><br>
     郵便番号(ハイフンなし) : <%= f.text_field :postal_code %>
   </div>
@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @deliveries.each do |f| %>
+            <%@deliveries.each do |f| %>
             <tr>
               <td><%= f.postal_code %></td>
         　　　　<td><%= f.address %></td>
