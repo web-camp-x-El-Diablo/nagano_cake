@@ -7,11 +7,11 @@ class CustomersController < ApplicationController
 
   def unsubscribe
   end
-  
+
   def update
   end
-  
+
   def withdraw
   end
-  
+
 end
