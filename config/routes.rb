@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   # 顧客のルーティング
+  resource :customers, only: [:edit, :update, :show]
   devise_for :customers
   get '/orders/thanks' => "orders#thanks"
   post '/orders/confirm' => "orders#confirm"
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   patch '/customers/withdraw' => "customers#withdraw"
   get '/customers/unsubscribe' => "customers#unsubscribe"
 
-  resource :customers, only: [:edit, :update, :show]
+  
   resources :products, only: [:index, :show]
   resources :cart_products, only: [:index, :update, :destroy, :create]
   resources :orders, only: [:index, :show, :new, :create]
