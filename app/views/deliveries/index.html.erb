@@ -1,2 +1,43 @@
-<h1>Deliveries#index</h1>
-<p>Find me in app/views/deliveries/index.html.erb</p>
+
+<h1>配送先一覧 / 登録</h1>
+<%= form_with(model: @delivery, :url => {:controller => "deliveries"}) do |f| %>
+  <div class="form-group has-icon"><br>
+    郵便番号(ハイフンなし) : <%= f.text_field :postal_code %>
+  </div>
+  <div class="form-group has-icon"><br>
+    住所 :  <%= f.text_field :address %>
+  </div>
+  <div class="form-group has-icon"><br>
+    宛名 : <%= f.text_field :destination %>
+  </div>
+<%= f.submit '新規登録する' ,class: "col-xs-2 pull-right btn-lg btn-success " %>
+<% end %>
+<table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>郵便番号</th>
+              <th>住所</th>
+              <th>宛名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @deliveries.each do |f| %>
+            <tr>
+              <td><%= f.postal_code %></td>
+        　　　　<td><%= f.address %></td>
+        　　　　<td><%= f.destination %></td>
+        　　  　<td><%= link_to "編集する", edit_delivery_path(f.id), class: "btn btn-success" %></td>
+        　　  　<td><%= link_to "削除する", delivery_path(f.id), method: :delete, class: "btn btn-danger" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
