@@ -6,12 +6,17 @@
           画像
         </div>
         <div class="product_details">
-          <h3>商品名</h3>
-          <p>商品紹介</p>
-          <p><span>価格</span>(税込)</p>
+          <h3><%= @product.name %></h3>
+          <p><%= @product.introduction %></p>
+          <p><span>¥<%= @product.price %></span>(税込)</p>
           <div class="order">
-            <select>個数</select>
-            <button class="btn btn-success">カートに入れる</button>
+            
+            <%= form_with(model: @cart_product, local: true) do |f| %>
+            
+            <%= f.select :amount, [*1..100], { include_blank: '個数選択'}, { class: 'form-control' , required: true } %>
+            <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
+            <% end %>
+            
           </div>
         </div>
       </div>
