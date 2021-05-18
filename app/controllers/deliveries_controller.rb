@@ -1,18 +1,36 @@
 class DeliveriesController < ApplicationController
   def index
-    @deriveries = current_customer.deriveries
-  	@deriveries = Deriveries.new
+  	@deliveries = Delivery.all
+  	@delivery = Delivery.new
   end
 
-  def edit
-  end
+	def create
+		 @delivery = Delivery.new(delivery_params)
+		 @delivery.save
+		 redirect_to deliveries_path
+	end
 
-  def create
-  end
-  
-  def update
-  end
- 
-  def destroy
+
+	def edit
+		@delivery = Delivery.find(params[:id])
+	end
+
+	def update
+		@delivery = Delivery.find(params[:id])
+    @delivery.update(delivery_params)
+    @deliveries = Delivery.all
+    @delivery = Delivery.new
+    redirect_to deliveries_path
+	end
+
+	def destroy
+		 @delivery = Delivery.find(params[:id])
+     @delivery.destroy
+     redirect_to deliveries_path
+	end
+
+	private
+  def delivery_params
+    params.require(:delivery).permit(:postal_code, :address, :destination)
   end
 end
