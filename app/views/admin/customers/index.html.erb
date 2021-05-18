@@ -20,6 +20,7 @@
       </td>
       
       <td><%= customer.email %></td>
+      <td><%= customer.is_deleted ? "無効" : "有効" %></td>
   </tr>
   <% end %>
 </tbody>
