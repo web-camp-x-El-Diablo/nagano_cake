@@ -7,4 +7,9 @@ class Order < ApplicationRecord
     preparering_delivery: 3,
     delivered: 4
   }
+  
+  enum payment_method:{
+    credit: 0,
+    cash: 1
+  }
 end

@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
+  case resource
+    when Customer
     products_path
+    when Admin
+    admin_products_path
+  end
   end
   
   def after_sign_up_path_for(resource)
@@ -15,3 +20,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :postal_code, :address, :telephone_number, :first_name_kana])
   end
 end
+
+
