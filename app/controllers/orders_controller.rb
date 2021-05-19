@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @order = Order
   end
 
   def confirm
