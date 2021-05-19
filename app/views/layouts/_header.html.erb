@@ -15,8 +15,9 @@
             <%= link_to "カート", '#', class: 'text-light' %></li>
           <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
             <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete,class: 'text-light'  %></li>
+        <% elsif admin_signed_in? %>
+          <%= render 'layouts/admin_header' %>
         <% else %>
-        
           <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
             <%= link_to "About", '/about', class: 'text-light' %></li>
           <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
