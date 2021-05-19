@@ -12,7 +12,6 @@
           <div class="order">
             
             <%= form_with(model: @cart_product, local: true) do |f| %>
-            
             <%= f.select :amount, [*1..100], { include_blank: '個数選択'}, { class: 'form-control' , required: true } %>
             <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
             <% end %>

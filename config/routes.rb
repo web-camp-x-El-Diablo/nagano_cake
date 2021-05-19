@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about", as: 'about'
+  post "/cart_products" => "cart_products#index"
 
   # 店側のルーティング
   devise_for :admins, skip: :all
@@ -28,8 +29,8 @@ Rails.application.routes.draw do
   patch '/customers/withdraw' => "customers#withdraw"
   get '/customers/unsubscribe' => "customers#unsubscribe"
 
-  
-  resources :products, only: [:index, :show]
+
+  resources :products, only: [:index, :show, :create]
   resources :cart_products, only: [:index, :update, :destroy, :create]
   resources :orders, only: [:index, :show, :new, :create]
   resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
