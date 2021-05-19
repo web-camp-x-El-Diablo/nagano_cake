@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     admin_products_path
   end
   end
-  
+
   def after_sign_up_path_for(resource)
-    products_path
+   root_path
   end
 
   def configure_permitted_parameters
