@@ -10,12 +10,13 @@
           <p><%= @product.introduction %></p>
           <p><span>¥<%= @product.price %></span>(税込)</p>
           <div class="order">
-            
-            <%= form_with(model: @cart_product, local: true) do |f| %>
+
+            <%= form_with(model: @cart_product, url: cart_products_path, local: true) do |f| %>
             <%= f.select :amount, [*1..100], { include_blank: '個数選択'}, { class: 'form-control' , required: true } %>
+            <%= f.hidden_field :product_id, value: @product.id%>
             <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
             <% end %>
-            
+
           </div>
         </div>
       </div>

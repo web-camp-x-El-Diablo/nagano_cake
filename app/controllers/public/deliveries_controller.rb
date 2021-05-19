@@ -1,4 +1,4 @@
-class DeliveriesController < ApplicationController
+class Public::DeliveriesController < ApplicationController
   def index
   	@deliveries = current_customer.deliveries
   	@delivery = Delivery.new
