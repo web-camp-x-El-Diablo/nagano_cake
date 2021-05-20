@@ -1,20 +1,12 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about", as: 'about'
-  devise_for :customers, controllers: {
-    sessions: 'customers/sessions',
-    paswords: 'customers/paswords',
-    registrations: 'customers/registrations',
-  }
-
 
   # 店側のルーティング
-  devise_for :admins, skip: :all
-  devise_scope :admin do
-    get '/admin/sign_in' => "admin/sessions#new", as: :new_admin_session
-    post '/admin/sign_in' => "admin/sessions#create", as: :admin_session
-    delete '/admin/sign_out' => "admin/sessions#destroy",as: :destroy_admin_session
-  end
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    paswords: 'admins/paswords',
+  }
 
   namespace :admin do
     get 'homes/top' => 'homes#top', as: 'top'
@@ -26,6 +18,12 @@ Rails.application.routes.draw do
   end
 
   # 顧客のルーティング
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    paswords: 'customers/paswords',
+    registrations: 'customers/registrations',
+  }
+
   scope module: :public do
     resource :customers, only: [:edit, :update, :show]
 
@@ -40,8 +38,5 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
 
   end
-
-
-
 
 end
