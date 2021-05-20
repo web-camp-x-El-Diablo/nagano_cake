@@ -1,0 +1,13 @@
+<p class="genre-title">ジャンル編集</p>
+
+<%= form_with model: @genre,:url => {:action => :update}, local: true do |f| %>
+<div class="form-content">
+  <p>ジャンル名</p>
+  <div class="form-group">
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+   <%= f.submit '変更を保存',class: 'btn btn-success' %>
+  </div>
+</div>
+<% end %>
