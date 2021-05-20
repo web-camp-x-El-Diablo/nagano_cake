@@ -28,7 +28,7 @@
                   <%= product.id %>
                 </td>
                 <td>
-                  <%= product.name %>
+                  <%=link_to product.name, admin_product_path(product.id) %>
                 </td>
                 <td>
                   <%= product.price %>
@@ -37,7 +37,7 @@
                   <%= product.genre.name %>
                 </td>
                 <td>
-                  <%= product.sales_status %>
+                  <%= product.sales_status ? "販売中" : "販売停止中" %>
                 </td>
               </tr>
             <% end %>
