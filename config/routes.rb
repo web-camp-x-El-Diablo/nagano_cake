@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about", as: 'about'
-  post "/cart_products" => "cart_products#index"
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    paswords: 'customers/paswords',
+    registrations: 'customers/registrations',
+  }
+
 
   # 店側のルーティング
   devise_for :admins, skip: :all
@@ -21,18 +26,22 @@ Rails.application.routes.draw do
   end
 
   # 顧客のルーティング
-  resource :customers, only: [:edit, :update, :show]
-  devise_for :customers
-  get '/orders/thanks' => "orders#thanks"
-  post '/orders/confirm' => "orders#confirm"
-  delete '/cart_products/destroy_all' => "cart_products#destroy_all"
-  patch '/customers/withdraw' => "customers#withdraw"
-  get '/customers/unsubscribe' => "customers#unsubscribe"
+  scope module: :public do
+    resource :customers, only: [:edit, :update, :show]
+
+    get '/orders/thanks' => "orders#thanks"
+    post '/orders/confirm' => "orders#confirm"
+    delete '/cart_products/destroy_all' => "cart_products#destroy_all"
+    patch '/customers/withdraw' => "customers#withdraw"
+    get '/customers/unsubscribe' => "customers#unsubscribe"
+    resources :cart_products, only: [:index, :update, :destroy, :create]
+    resources :products, only: [:index, :show, :create]
+    resources :orders, only: [:index, :show, :new, :create]
+    resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
+
+  end
 
 
-  resources :products, only: [:index, :show, :create]
-  resources :cart_products, only: [:index, :update, :destroy, :create]
-  resources :orders, only: [:index, :show, :new, :create]
-  resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
+
 
 end

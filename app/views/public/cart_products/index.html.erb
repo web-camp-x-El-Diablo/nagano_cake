@@ -16,6 +16,17 @@
       </thead>
 
       <tbody>
+
+      <% @cart_products.each do |cart_product| %>
+        <tr>
+          <td><%= cart_product.product.name %></td>
+          <td><%= cart_product.product.price %></td>
+          <td><%= cart_product.amount %></td>
+
+
+          </td>
+        </tr>
+     <% end %>
       </tbody>
     </table>
     <div class="col-xs-9 margin-bottom">

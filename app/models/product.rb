@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   # 商品のアソシエーション
   belongs_to :genre
-  belongs_to :cart
+  has_many :cart_products
   # 商品の画像投稿
   attachment :image, destroy: false
 
