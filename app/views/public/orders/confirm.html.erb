@@ -13,12 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>商品画像、商品名</td>
-            <td>単価</td>
-            <td>数量</td>
-            <td>小計</td>
-          </tr>
+          <%= render 'public/orders/confirmination_table.html', cart_products: @cart_products %>
         </tbody>
       </table>
       <div class="fees-info border">
@@ -28,13 +23,26 @@
           <p>請求金額</p>
         </div>
         <div class="fees">
-          <p>送料</p>
-          <p>商品合計</p>
-          <p>請求金額</p>
+          <% @total %>
+          <p><%= @delivery_fee %></p>
+          <p><%= @sum %></p>
+          <p><%= @total = @sum + @delivery_fee %></p>
         </div>
       </div>
-      <p>支払方法</p>
-      <p>お届け先</p>
+      <div class="order_confirmination">
+        <%= form_with model: @order, url: orders_thanks_path, local:true do |g| %>
+          <%= g.hidden_field :payment_method, :value => @order.payment_method %>
+          <%= g.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
+          <%= g.hidden_field :delivery_address, :value => @order.delivery_address %>
+          <%= g.hidden_field :delivery_name, :value => @order.delivery_name %>
+          <p>支払方法 <%= @order.payment_method %></p>
+          <p>お届け先</p>
+          <%= @order.delivery_postal_code %>
+          <%= @order.delivery_address %>
+          <%= @order.delivery_name %>
+          <%= g.submit '注文を確定する', class: 'btn btn-success' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

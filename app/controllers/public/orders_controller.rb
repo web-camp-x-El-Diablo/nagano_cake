@@ -11,16 +11,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new
-      if params[:order][:address_opition] == 0
-      @order.delivery_address = current_customer.address
-      @order.delivery_name = current_customer.name
-      @order.delivery_postal_code = current_customer.postal_code
-      end
-   
-      
-   	@order.save
-    redirect_to orders_confirm_path
+    @order = current_customer.orders.build(order_params)
+    @cart_products = current_customer.cart_products
+    @delivery_fee = "800"
+    @order.save
+    redirect_to orders_thanks
   end
 
   def thanks
