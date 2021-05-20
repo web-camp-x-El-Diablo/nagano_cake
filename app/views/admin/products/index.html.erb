@@ -31,13 +31,13 @@
                   <%=link_to product.name, admin_product_path(product.id) %>
                 </td>
                 <td>
-                  <%= product.price %>
+                  <%= product.price.to_s(:delimited) %>
                 </td>
                 <td>
                   <%= product.genre.name %>
                 </td>
                 <td>
-                  <%= product.sales_status ? "販売中" : "販売停止中" %>
+                  <%= product.sales_status ? "販売停止中" : "販売中" %>
                 </td>
               </tr>
             <% end %>

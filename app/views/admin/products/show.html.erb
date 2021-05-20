@@ -17,9 +17,9 @@
         <div class="product_detail">
           <h4><%= @product.name %></h4>
           <h4><%= @product.introduction %></h4>
-          <h4>ジャンル</h4>
+          <h4><%= @product.genre.name %></h4>
           <h4><%= @product.add_tax_price.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</h4>
-          <h4><%= @product.sales_status ? "販売中" : "販売停止中"%></h4>
+          <h4><%= @product.sales_status ? "販売停止中" : "販売中"%></h4>
           <button class="btn btn-success"><%= link_to "編集する", "/admin/products/#{@product.id}/edit"  %></button>
         </div>
       </div>
