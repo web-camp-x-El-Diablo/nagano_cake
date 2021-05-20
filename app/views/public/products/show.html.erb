@@ -1,14 +1,14 @@
 <div class="contatiner">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-sm-10 col-md- col-lg-7 px- px-sm-0 mx-auto">
       <div class="product">
         <div class="product_image">
-          画像
+          <%= attachment_image_tag @product, :image,fallback: "no_image.jpg", style: "width:50%; "%>
         </div>
         <div class="product_details">
           <h3><%= @product.name %></h3>
           <p><%= @product.introduction %></p>
-          <p><span>¥<%= @product.price %></span>(税込)</p>
+          <p><span>¥<%= @product.add_tax_price.to_s(:delimited) %></span>(税込)</p>
           <div class="order">
 
             <%= form_with(model: @cart_product, url: cart_products_path, local: true) do |f| %>

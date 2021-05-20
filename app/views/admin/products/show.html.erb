@@ -1,10 +1,11 @@
 <!-- admin側の商品詳細ページ -->
+<p class="genre-title">商品詳細</p>
 <div class="contatiner">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-10 col-md-8 col-lg-7 px- px-sm-0 mx-auto">
       <div class="product">
         <div class="product_image">
-          画像
+          <%= attachment_image_tag @product, :image,fallback: "no_image.jpg", style: "width:50%; "%>
         </div>
         <div class="product_title">
           <p>商品名</p>
