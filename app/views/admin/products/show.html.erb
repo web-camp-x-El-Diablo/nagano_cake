@@ -1,27 +1,2 @@
-<!-- admin側の商品詳細ページ -->
-<div class="contatiner">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <div class="product">
-        <div class="product_image">
-          画像
-        </div>
-        <div class="product_title">
-          <p>商品名</p>
-          <p>商品紹介</p>
-          <p>税込価格</p>
-          <p>(税抜価格)</p>
-          <p>販売ステータス</p>
-        </div>
-        <div class="product_detail">
-          <h4><%= @product.name %></h4>
-          <h4><%= @product.introduction %></h4>
-          <h4>ジャンル</h4>
-          <h4><%= @product.add_tax_price.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</h4>
-          <h4><%= @product.sales_status ? "販売中" : "販売停止中"%></h4>
-          <button class="btn btn-success"><%= link_to "編集する", "/admin/products/#{@product.id}/edit"  %></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<h1>Admin::Products#show</h1>
+<p>Find me in app/views/admin/products/show.html.erb</p>
