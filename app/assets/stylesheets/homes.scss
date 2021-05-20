@@ -2,26 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container{
 
-.main-visual-content {
+}
+.main-visual-content{
   width: 800px;
   height: 400px;
   background-image: url(top_image.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.1);
   margin-top: 30px;
+}
+
+.new-product-content{
+  width: 800px;
+  height: auto;
 }
 
 .main-visual-text {
   position: absolute;
   margin: auto;
-  top:  50%;                     /* 位置指定 */ 
-  left:  50%;                    /* 位置指定 */ 
+  top:  50%;                     /* 位置指定 */
+  left:  50%;                    /* 位置指定 */
   transform: translateY(-50%) translateX(-50%);      /* 位置指定 */
   width: 600px;
   height: 200px;
-  font-size: 20px;
-  
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.new-product-title{
+  margin-top: 20px;
 }
