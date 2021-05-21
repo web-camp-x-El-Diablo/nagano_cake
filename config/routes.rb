@@ -17,15 +17,8 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
 
-  # 顧客のルーティング
-  devise_for :customers, controllers: {
-    sessions: 'customers/sessions',
-    paswords: 'customers/paswords',
-    registrations: 'customers/registrations',
-  }
-
   scope module: :public do
-    resource :customers, only: [:edit, :update, :show]
+    resource :customers
 
     get '/orders/thanks' => "orders#thanks"
     post '/orders/confirm' => "orders#confirm"
@@ -38,5 +31,12 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
 
   end
+ # 顧客のルーティング
+    devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    paswords: 'customers/paswords',
+    registrations: 'customers/registrations',
+
+  }
 
 end
