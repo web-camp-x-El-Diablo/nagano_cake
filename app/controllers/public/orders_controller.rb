@@ -1,9 +1,15 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
-    @orders = Order.all
+    @orders = Order.all.page(params[:page])
+    @delivery_fee = 800
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @delivery_fee = 800
   end
 
   def new
