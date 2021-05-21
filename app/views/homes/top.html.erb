@@ -24,9 +24,9 @@
           <% @products.each do |product| %>
            <div class="col-md-3 text-center">
         <!--商品画像タグ-->
-             <div class="product-picture">
+             <div class="product_image">
                <%= link_to product_path(product) do %>
-               <%= attachment_image_tag product, :image,fallback: "no_image.jpg", style: "width:50%; "%>
+               <%= attachment_image_tag product, :image,fallback: "no_image.jpg", size: "155x100"%>
                <% end %>
              </div>
         <!--商品名タグ-->

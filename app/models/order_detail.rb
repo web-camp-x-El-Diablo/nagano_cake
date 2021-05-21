@@ -1,5 +1,5 @@
 class OrderDetail < ApplicationRecord
-  belongs_to :customer
+  belongs_to :order
   belongs_to :product
   enum production_status:{
     unable: 0,
