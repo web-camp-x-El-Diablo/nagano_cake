@@ -1,13 +1,17 @@
+<!-- 管理者トップページ -->
+
 <div class="container">
   <div class="row">
     <div class="col-md-10" style="margin-top: 30px;">
       <h4>注文履歴一覧</h4>
       <div class="table" style="margin-top:20px;">
+        <!-- 注文一覧のテーブル -->
+
         <%= render 'admin/homes/orders', orders: @orders %>
       </div>
     </div>
-    <div class="pagination">
+  </div>
+  <div class="pagination">
       <%= paginate @orders %>
-    </div>
   </div>
 </div>
