@@ -11,16 +11,18 @@
     <% orders.each do |order| %>
       <tr>
         <td>
-          <%= order.created_at %>
+          <%= link_to admin_order_path(order.id), method: :get, local:true do %>
+            <%= order.created_at %>
+          <% end %>
         </td>
         <td>
-          <%= order.customer.name %>
+          <%= order.customer.last_name %> <%= order.customer.first_name %>
         </td>
         <td>
-          <%= @order_details.amount %>
+          <%= order.order_details.group(:amount).count.reduce(0) {|sum, (key, value)| sum += key * value} %>
         </td>
         <td>
-          <%= order_status_i18n %>
+          <%= order.order_status %>
         </td>
       </tr>
     <% end %>
