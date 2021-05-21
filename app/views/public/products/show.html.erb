@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-sm-10 col-md- col-lg-7 px- px-sm-0 mx-auto">
       <div class="product">
-        <div class="product_image">
-          <%= attachment_image_tag @product, :image,fallback: "no_image.jpg", style: "width:50%; "%>
-        </div>
+        <a class="product_image">
+          <%= attachment_image_tag @product, :image,fallback: "no_image.jpg", size: "350x300"%>
+        </a>
         <div class="product_details">
           <h3><%= @product.name %></h3>
           <p><%= @product.introduction %></p>
@@ -23,3 +23,4 @@
     </div>
   </div>
 </div>
+

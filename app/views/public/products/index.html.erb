@@ -2,17 +2,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12" style="margin-top: 30px;">
-      <h4>商品一覧</h4>
+      <h4>商品一覧(全<%= @products.count %>件)</h4>
       <div class="row">
           <% @products.each do |product| %>
             <div class="col-md-3 text-center">
               <!--画像のクリックで詳細ページに移動できます-->
+              <div class="product_image">
               <%= link_to product_path(product) do %>
-              <%= attachment_image_tag product, :image,fallback: "no_image.jpg", style: "width:50%; "%>
+              <%= attachment_image_tag product, :image,fallback: "no_image.jpg", size: "255x200"%>
               <% end %>
-              
+
               <div><%= product.name %></div>
               <div>¥<%= product.price.to_s(:delimited) %></div>
+              </div>
             </div>
           <% end %>
       </div>
