@@ -1,9 +1,13 @@
 <% @sum = 0 %>
 <% @cart_products.each do |cart_product| %>
   <tr>
-    <td><%= attachment_image_tag cart_product.product, :image, fallback: "no_image.jpg", size: '30x30' %>　<%= cart_product.product.name %></td>
-    <td><%= cart_product.product.price * 1.1 %></td>
+    <td>
+      <%= attachment_image_tag cart_product.product, :image, fallback: "no_image.jpg", size: '50x50' %>
+      <%= cart_product.product.name %>
+    </td>
+    <td><%= (cart_product.product.price * 1.1).to_i %></td>
     <td><%= cart_product.amount %></td>
-    <td><%= @sum += cart_product.amount * (cart_product.product.price * 1.1) %></td>
+    <td><%= cart_product.amount * (cart_product.product.price * 1.1).to_i %></td>
+    <% @sum += (cart_product.product.price * cart_product.amount * 1.1 ).to_i  %>
   </tr>
 <% end %>
