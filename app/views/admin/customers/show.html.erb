@@ -1,11 +1,60 @@
-<h2><%= @customers.last_name %><%= @customers.first_name %>さんの会員情報</h2>
-<p>会員ID <%= @customers.id %></p>
-<p>氏名　<%= @customers.last_name %><%= @customers.first_name %></p>
-<p>フリガナ　<%= @customers.last_name_kana %><%= @customers.first_name_kana %></p>
-<p>郵便番号　<%= @customers.postal_code %></p>
-<p>住所　<%= @customers.address %></p>
-<p>電話番号　<%= @customers.telephone_number %></p>
-<p>メールアドレス　<%= @customers.email %></p>
-<p>会員ステータス  <%= @customers.is_deleted ? "無効" : "有効" %></p>
-<%= link_to "編集する", edit_admin_customer_path(@customers.id) %>
-<%= link_to "注文履歴一覧を見る", admin_order_path(@customers.id) %>
+<div class="row">
+  <h2 class="col-md-3 mx-auto font-weight-bold"><%= @customers.last_name %><%= @customers.first_name %>さんの会員情報</h2>
+</div>
+<br>
+ <br>
+ <div class="row">
+   <div class="col-md-10">
+     <table bgcolor="#FFF" class="table tableborderd shadnow">
+       <tr>
+         <th class="text-left bg-secondary text-light">会員ID</th>
+         <td><%= @customers.id %></td>
+       </tr>
+       <tr>
+         <th class"text-left bg-secondary text-light">氏名</th>
+         <td><%= @customers.last_name %><%= @customers.first_name %></td>
+       </tr>
+        <tr>
+         <th class"text-left bg-secondary text-light">フリガナ</th>
+         <td><%= @customers.last_name_kana %><%= @customers.first_name_kana %></td>
+       </tr>
+       <tr>
+         <th class"text-left bg-secondary text-light">郵便番号</th>
+         <td><%= @customers.postal_code %></td>
+       </tr>
+        <tr>
+         <th class"text-left bg-secondary text-light">住所</th>
+         <td><%= @customers.address %></td>
+       </tr>
+       <tr>
+         <th class"text-left bg-secondary text-light">電話番号</th>
+         <td><%= @customers.telephone_number %></td>
+       </tr>
+       <tr>
+         <th class"text-left bg-secondary text-light">メールアドレス</th>
+         <td><%= @customers.email %></td>
+       </tr>
+       <tr>
+         <th class"text-left bg-secondary text-light">会員ステータス</th>
+         <td><%= @customers.is_deleted ? "無効" : "有効" %></td>
+       </tr>
+     </table>
+   </div>
+ </div>
+<div class="row">
+  <div class="col-md-10">
+    <table>
+      <tr>
+        <td><b class="form">登録情報</b></td>
+        <td><%= link_to "編集する", edit_admin_customer_path(@customers.id), class: "btn btn-success" %></td>
+      </tr>
+      <tr>
+        <td><br></td>
+      </tr>
+      <tr>
+        <td><b class="form">注文情報</b></td>
+        <td><%= link_to "履歴一覧を見る", admin_order_path(@customers.id), class: "btn btn-primary" %></td>
+      </tr>
+    </table>
+  </div>
+</div>
