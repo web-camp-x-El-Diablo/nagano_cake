@@ -2,13 +2,7 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
 
-  enum order_status:{
-    waiting_for_payment: 0,
-    confirm_payment: 1,
-    processing: 2,
-    preparering_delivery: 3,
-    delivered: 4
-  }
+ enum order_status: {入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済み: 4}, _prefix: true
 
   enum payment_method:{
     credit: 0,

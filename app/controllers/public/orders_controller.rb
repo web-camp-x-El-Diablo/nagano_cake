@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
       current_customer.delivery_addresses.each do |delivery_address|
         @order.delivery_postal_code = delivery_address.delivery.postal_code
         @order.delivery_address = delivery_address.delivery.address
-        @order.delivery_name = delivery_address.delivery.name
+        @order.delivery_ = delivery_address.delivery.name
       end
     elsif params[:order][:address_option] == "2"
       @order.order_postal_code = params[:order][:order_postal_code]
