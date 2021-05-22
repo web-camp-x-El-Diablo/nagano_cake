@@ -6,4 +6,9 @@ class Customer < ApplicationRecord
   has_many :deliveries
   has_many :cart_products
   has_many :orders
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end

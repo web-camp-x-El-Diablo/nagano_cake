@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-
+  
   # 注文情報確認画面
   def confirm
     @order = current_customer.orders.build(order_params)
@@ -32,12 +32,11 @@ class Public::OrdersController < ApplicationController
         @order.delivery_address = current_customer.address
         @order.delivery_name = current_customer.last_name + current_customer.first_name
         @order.delivery_postal_code = current_customer.postal_code
-    elsif params[:order][:address_option] == "1"
-      current_customer.delivery_addresses.each do |delivery_address|
-        @order.delivery_postal_code = delivery_address.delivery.postal_code
-        @order.delivery_address = delivery_address.delivery.address
-        @order.delivery_ = delivery_address.delivery.name
-      end
+    elsif params[:order][:address_opition] == "1"
+      delivery = Delivery.find(params[:order][:delivery_id])
+        @order.delivery_postal_code = delivery.postal_code
+        @order.delivery_address = delivery.address
+        @order.delivery_name = delivery.destination
     elsif params[:order][:address_option] == "2"
       @order.order_postal_code = params[:order][:order_postal_code]
       @order.order_address = params[:order][:order_address]
