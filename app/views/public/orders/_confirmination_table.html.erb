@@ -2,7 +2,7 @@
 <% @cart_products.each do |cart_product| %>
   <tr>
     <td>
-      <%= attachment_image_tag cart_product.product, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <%= attachment_image_tag cart_product.product, :image, :fill, 150, 150, class: "product_image", fallback: "no_image.jpg" %>
       <%= cart_product.product.name %>
     </td>
     <td><%= (cart_product.product.price * 1.1).to_i.to_s(:delimited) %> 円</td>

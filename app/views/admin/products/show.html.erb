@@ -19,7 +19,13 @@
               <tr><td class="space">商品紹介</td><td class="space-text"><%= @product.introduction %></td></tr>
               <tr><td class="space">ジャンル名</td><td class="space-text"><%= @product.genre.name %></td></tr>
               <tr><td class="space">税込価名<br>(税抜価格)</td><td class="space-text"><%= @product.add_tax_price.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</td></tr>
-              <tr><td class="space">販売ステータス</td><td class="space-text"><%= @product.sales_status ? "販売停止中" : "販売中"%></td></tr>
+              <tr><td class="space">販売ステータス</td>
+                <% unless @product.sales_status %>
+                  <td class="space-text" style="color: green; font-weight: bold;">販売中</td>
+                <% else %>
+                  <td class="space-text" style="color: red; font-weight: bold;">販売停止中</td>
+                <% end %>
+              </tr>
             </table>
           </div>
           <button class="btn btn-success"><%= link_to "編集する", "/admin/products/#{@product.id}/edit"  %></button>
