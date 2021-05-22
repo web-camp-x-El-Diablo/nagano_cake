@@ -39,15 +39,15 @@
         <tbody>
           <tr>
             <td class="table-secondary">商品合計</td>
-            <td><%= @sum.to_s(:delimited) %></td>
+            <td><%= @sum.to_s(:delimited) %> 円</td>
           </tr>
           <tr>
             <td class="table-secondary">配送料</td>
-          <td><%= @delivery_fee %></td>
+          <td><%= @delivery_fee %> 円</td>
           </tr>
           <tr>
             <td class="table-secondary">ご請求額</td>
-            <td><%= (@sum + @delivery_fee).to_s(:delimited) %></td>
+            <td><%= (@sum + @delivery_fee).to_s(:delimited) %> 円</td>
           </tr>
         </tbody>
       </table>
@@ -70,9 +70,9 @@
               <%= attachment_image_tag order_detail.product, :image, size: "50x50" %>
               <%= order_detail.product.name %>
             </td>
-            <td><%= ((order_detail.product.price * 1.1).floor).to_s(:delimited) %></td>
-            <td><%= order_detail.amount %></td>
-            <td><%= ((order_detail.product.price * 1.1).floor * order_detail.amount).to_s(:delimited) %></td>
+            <td><%= ((order_detail.product.price * 1.1).floor).to_s(:delimited) %> 円</td>
+            <td><%= order_detail.amount %> 個</td>
+            <td><%= ((order_detail.product.price * 1.1).floor * order_detail.amount).to_s(:delimited) %> 円</td>
           </tr>
           <% end %>
         </tbody>

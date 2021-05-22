@@ -21,6 +21,10 @@ class Admin::OrdersController < ApplicationController
         @order.order_status = "製作中"
         order_detail.save
         @order.save
+      elsif order_detail.production_status == "製作完了"
+        @order.order_status = "発送準備中"
+        order_detail.save
+        @order.save
       end
     end
     redirect_to admin_order_path(@order)
