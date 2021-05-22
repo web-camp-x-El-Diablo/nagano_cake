@@ -28,9 +28,9 @@
         <td>販売ステータス</td>
         <td>
            <%= f.radio_button :sales_status, '0', checked: true %>
-           <%= f.label :sales_status, "販売中", {value: :sales_status, style: "color: green;"} %>
+           <%= f.label :sales_status, "販売中", {value: :sales_status} %>
            <%= f.radio_button :sales_status, '1' %>
-           <%= f.label :sales_status, "販売停止中", {value: :sales_status, style: "color: red;"} %>
+           <%= f.label :sales_status, "販売停止中", {value: :sales_status} %>
         </td>
       </tr>
       <tr>
