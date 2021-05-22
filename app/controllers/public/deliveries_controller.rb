@@ -7,8 +7,12 @@ class Public::DeliveriesController < ApplicationController
   def create
       @delivery = Delivery.new(delivery_params)
       @delivery.customer_id = current_customer.id
-   	  @delivery.save
+      if @delivery.save
       redirect_to deliveries_path
+      else
+      @deliveries = Delivery.where(customer_id: current_customer.id)
+      render :index
+      end
   end
 
   def edit
