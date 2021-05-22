@@ -10,22 +10,11 @@ class Admin::OrdersController < ApplicationController
   # 製作ステータスとの紐づけ
   def update
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
     @order.update(order_status_params)
 
-    @order_detail = @order.order_details.each do |order_detail|
-      if @order.order_status == "入金確認"
-        order_detail.production_status = "製作待ち"
-        order_detail.save
-        @order.save
-      elsif order_detail.production_status == "製作中"
-        @order.order_status = "製作中"
-        order_detail.save
-        @order.save
-      elsif order_detail.production_status == "製作完了"
-        @order.order_status = "発送準備中"
-        order_detail.save
-        @order.save
-      end
+    if @order.order_status == "入金確認"
+      @order_details.update(production_status: 1)
     end
     redirect_to admin_order_path(@order)
   end
