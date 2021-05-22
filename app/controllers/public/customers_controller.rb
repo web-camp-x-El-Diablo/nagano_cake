@@ -25,10 +25,16 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def create
+    @customer = Customer.new(customer_params)
+    @customer.save
+    redirect_to products_path
+  end
+
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :postal_code, :address, :telephone_number, :first_name_kana, :email, :is_deleted)
+    params.require(:customer).permit(:email, :encrypted_password, :last_name, :first_name, :last_name_kana, :postal_code, :address, :telephone_number, :first_name_kana, :email, :is_deleted)
   end
 
 end

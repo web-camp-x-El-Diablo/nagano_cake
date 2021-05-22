@@ -1,15 +1,11 @@
 <div class="row">
-  <h4 class="col-md-2 mx-auto font-weight-bold">ログイン</h4>
-</div>
-
-<div class="row">
-  <p class="col-md-2 mx-auto font-weight-bold"><span style="background-color:#C0C0C0">会員の⽅はこちらからログイン</span></p>
+  <h4 class="col-md-2 mx-auto font-weight-bold">管理者ログイン</h4>
 </div>
 
 <div class="row">
 <div class="mx-auto">
-  <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
-    <table class='table table-borderless'>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+   <table class='table table-borderless'>
       <tr>
         <th><%= f.label :email, "メールアドレス" %></th>
         <td><%= f.email_field :email, autofocus: true, placeholder: "XXX@XXXX.com", size: "40" %></td>
@@ -26,4 +22,3 @@
   <% end %>
   </div>
 </div>
-<%= render "customers/shared/links" %>
