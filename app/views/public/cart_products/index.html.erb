@@ -29,7 +29,7 @@
           <% @cart_products.each do |cart_product| %>
               <tr>
                 <td><%= (attachment_image_tag cart_product.product, :image, fallback: "no_image.jpg", size: "50x50" ) %><%= cart_product.product.name %></td>
-                <td><%= (cart_product.product.price * 1.08).to_i.to_s(:delimited)  %>円</td>
+                <td><%= (cart_product.product.price * 1.1).to_i.to_s(:delimited)  %>円</td>
                 <td align="center" valign="middle">
                 <%= form_with url: cart_product_path(cart_product.id), model: cart_product, local: true do |f| %>
                     <div class="form-group" style="margin: 0px;">
@@ -38,8 +38,8 @@
                     </div>
                 <% end %>
                 </td>
-                <td><%= (cart_product.product.price * cart_product.amount * 1.08).to_i.to_s(:delimited)  %></td>
-                <% @sum += (cart_product.product.price * cart_product.amount * 1.08 ).to_i  %>
+                <td><%= (cart_product.product.price * cart_product.amount * 1.1).to_i.to_s(:delimited)  %></td>
+                <% @sum += (cart_product.product.price * cart_product.amount * 1.1).to_i  %>
                 <td align="center" valign="middle"><%= link_to "削除する", cart_product_path(cart_product.id), method: :delete, class:"btn btn-danger" %></td>
               </tr>
             <% end %>

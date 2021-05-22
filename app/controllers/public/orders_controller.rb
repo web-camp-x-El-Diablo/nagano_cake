@@ -1,21 +1,29 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
+  # カスタマー側の注文履歴一覧ページ
   def index
-    @orders = Order.all.page(params[:page])
+    @orders = current_customer.orders.order(created_at: "DESC")
     @delivery_fee = 800
   end
 
+  # カスタマー側の注文履歴詳細ページ
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @delivery_fee = 800
+    @sum = 0
+    @order_details.each do |order_detail|
+      @sum += (order_detail.subtotal * 1.1 * order_detail.amount).floor
+    end
   end
 
+  # 注文情報入力画面
   def new
     @order = Order.new
   end
 
+  # 注文情報確認画面
   def confirm
     @order = current_customer.orders.build(order_params)
     @cart_products = CartProduct.where(customer_id: current_customer.id)
@@ -35,34 +43,36 @@ class Public::OrdersController < ApplicationController
       @order.order_address = params[:order][:order_address]
       @order.order_name = params[:order][:order_name]
     end
+  end
 
+  # thanksページ
+  def thanks
+  end
+
+  # 注文情報を作成する
+  def create
+    @cart_products = CartProduct.where(customer_id: current_customer.id)
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     if @order.save
+      @cart_products.each do |cart_product|
+        @order_details = OrderDetail.new
+        @order_details.product_id = cart_product.product_id
+        @order_details.amount = cart_product.amount
+        @order_details.subtotal = (cart_product.product.price * 1.1).floor
+        @order_details.order_id = @order.id
+        @order_details.save
+      end
+      @cart_products.destroy_all
+      redirect_to orders_thanks_path
     else
       render :new
     end
   end
 
-  def thanks
-  end
-
-  def create
-    @cart_products = CartProduct.where(customer_id: current_customer.id)
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    @cart_products.each do |cart_product|
-      @order_details = OrderDetail.new
-      @order_details.product_id = cart_product.product_id
-      @order_details.amount = cart_product.amount
-      @order_details.subtotal = (cart_product.product.price * 1.1).floor
-      @order_details.order_id = @order.id
-      @order_details.save
-    end
-    @cart_products.destroy_all
-    redirect_to orders_thanks_path
-  end
+  private
 
   def order_params
-    params.require(:order).permit(:payment_method, :delivery_postal_code, :delivery_address, :delivery_name, :total_payment, :delivery_fee)
+    params.require(:order).permit(:customer_id, :payment_method, :delivery_postal_code, :delivery_address, :delivery_name, :total_payment, :delivery_fee)
   end
 end
