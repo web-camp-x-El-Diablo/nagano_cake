@@ -1,4 +1,8 @@
 class Public::CartProductsController < ApplicationController
+  before_action :authenticate_customer!
+
+  # cart_productの各アクション
+
   def index
       @cart_products = current_customer.cart_products
   end
@@ -22,6 +26,8 @@ class Public::CartProductsController < ApplicationController
     redirect_to cart_products_path
   end
 
+  # カートに入っている商品をすべて削除
+
   def destroy_all
     @cart_products = current_customer.cart_products
     @cart_products.destroy_all
@@ -30,6 +36,7 @@ class Public::CartProductsController < ApplicationController
 
 
   private
+
   def cart_product_params
     params.require(:cart_product).permit(:product_id, :amount)
   end

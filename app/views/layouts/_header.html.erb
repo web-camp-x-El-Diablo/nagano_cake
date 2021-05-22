@@ -5,29 +5,17 @@
 
       <nav>
         <ul class="nav navbar-nav navbar-right ml-auto bg p-4">
-        <!--if分を追加予定（ユーザーデータがないので完成でき次第）-->
+
+        <!-- 会員ログイン時 -->
         <% if customer_signed_in? %>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to "マイページ", '/customers', class: 'text-light' %></li>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to "商品一覧", '/products', class: 'text-light' %></li>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to "カート", 'cart_products', class: 'text-light' %></li>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete,class: 'text-light'  %></li>
+          <%= render 'layouts/customer_header' %>
         <% elsif admin_signed_in? %>
+        <!-- adminログイン時 -->
           <%= render 'layouts/admin_header' %>
         <% else %>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to "About", '/about', class: 'text-light' %></li>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to "商品一覧", '/products', class: 'text-light'%></li>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to "新規登録", '/customers/sign_up', class: 'text-light' %></li>
-          <li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
-            <%= link_to "ログイン", '/customers/sign_in', class: 'text-light' %></li>
+        <!-- 非ログイン時 -->
+          <%= render 'layouts/nologin_header' %>
         <% end %>
-
         </ul>
       </nav>
 

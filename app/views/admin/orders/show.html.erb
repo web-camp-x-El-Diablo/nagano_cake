@@ -1,3 +1,5 @@
+<!-- 管理者側の注文詳細ページ -->
+
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
@@ -52,9 +54,9 @@
           <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.product.name %></td>
-              <td><%= order_detail.subtotal %></td>
-              <td><%= order_detail.amount %></td>
-              <td><%= (order_detail.subtotal * order_detail.amount * 1.1 ).to_i %></td>
+              <td><%= (order_detail.subtotal).to_i.to_s(:delimited) %> 円</td>
+              <td><%= order_detail.amount %> 個</td>
+              <td><%= (order_detail.subtotal * order_detail.amount * 1.1 ).to_i.to_s(:delimited) %> 円</td>
               <% @sum += (order_detail.subtotal * order_detail.amount * 1.1 ).to_i  %>
               <td>
                 <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail),local: true) do |f| %>
@@ -72,7 +74,7 @@
         <% @total = 0 %>
           <tr>
             <th>商品合計</th>
-            <td><%= @sum %> 円</td>
+            <td><%= (@sum).to_i.to_s(:delimited) %> 円</td>
           </tr>
           <tr>
             <th>送料</th>
@@ -80,7 +82,7 @@
           </tr>
           <tr>
             <th>請求金額合計</th>
-            <td><%= @total = @sum + @order.delivery_fee %> 円</td>
+            <td><%= (@total = @sum + @order.delivery_fee).to_i.to_s(:delimited) %> 円</td>
           </tr>
         </tbody>
       </table>
