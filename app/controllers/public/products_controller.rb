@@ -1,4 +1,7 @@
 class Public::ProductsController < ApplicationController
+  # ユーザーがログインしないとカート内に商品を入れらないように設定
+  before_action :authenticate_customer!, only: [:create]
+  
   def index
     @products = Product.all.page(params[:page]).per(8)
   end

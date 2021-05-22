@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
-  before_action :authenticate_admin!
+  # 管理者側のログインを管理
+   before_action :authenticate_admin!
   # 商品のコントローラー
   def index
     @products = Product.all.page(params[:page]).per(10)
