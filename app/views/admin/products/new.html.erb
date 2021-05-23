@@ -1,3 +1,13 @@
+<% if @product.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <p class="genre-title">商品新規登録</p>
 
 <%= form_with model: @product,:url => {:controller => :products, :action => :create}, local: true do |f| %>
