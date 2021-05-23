@@ -22,12 +22,14 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-  
+
   # 注文情報確認画面
   def confirm
     @order = current_customer.orders.build(order_params)
     @cart_products = CartProduct.where(customer_id: current_customer.id)
     @delivery_fee = 800
+    @order.payment_method = params[:order][:payment_method]
+
     if params[:order][:address_opition] == "0"
         @order.delivery_address = current_customer.address
         @order.delivery_name = current_customer.last_name + current_customer.first_name
