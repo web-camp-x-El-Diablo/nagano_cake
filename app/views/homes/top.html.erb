@@ -35,7 +35,7 @@
         <!--商品画像タグ-->
              <div class="product_image">
                <%= link_to product_path(product) do %>
-               <%= attachment_image_tag product, :image,fallback: "no_image.jpg", size: "155x100"%>
+               <%= attachment_image_tag product, :image,fallback: "no_image.jpg", size: "155x100", style: "border-radius:20px"%>
                <% end %>
              </div>
         <!--商品名タグ-->
