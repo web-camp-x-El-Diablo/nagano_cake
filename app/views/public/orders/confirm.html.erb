@@ -37,11 +37,7 @@
       <table class="table table-borderless">
         <tr>
           <th class="h5">支払方法</th>
-          <% if @order.payment_method == true %>
-            <td>クレジットカード</td>
-          <% else %>
-            <td>現金</td>
-          <% end %>
+          <td><%= @order.payment_method %></td>
         </tr>
         <tr>
           <th class="h5">お届け先</th>
