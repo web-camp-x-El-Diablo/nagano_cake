@@ -26,6 +26,10 @@
           </td>
         </tr>
         <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method %></td>
+        </tr>
+        <tr>
           <th>注文ステータス</th>
           <td>
             <%= form_with(model: @order, url: admin_order_path, local: true) do |f| %>
