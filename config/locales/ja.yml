@@ -1,4 +1,21 @@
 ja:
+ activerecord:
+  attributes:
+   customer:
+      email: "メールアドレス"
+      encrypted_password: "パスワード"
+      password_confirmation: "確認用パスワード"
+      password: "パスワード"
+      last_name: "(姓)"
+      last_name_kana: "(セイ)"
+      first_name: "(名)"
+      first_name_kana: "(メイ)"
+      postal_code: "郵便番号"
+      address: "住所"
+      telephone_number: "電話番号"
+      
+      
+
   enums:
     orders:
       order_status:

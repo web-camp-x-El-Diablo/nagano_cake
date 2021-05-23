@@ -29,20 +29,26 @@ class Public::OrdersController < ApplicationController
     @cart_products = CartProduct.where(customer_id: current_customer.id)
     @delivery_fee = 800
     @order.payment_method = params[:order][:payment_method]
-
+  # ご自身の住所
     if params[:order][:address_opition] == "0"
         @order.delivery_address = current_customer.address
         @order.delivery_name = current_customer.last_name + current_customer.first_name
         @order.delivery_postal_code = current_customer.postal_code
+  # 登録済みの住所
     elsif params[:order][:address_opition] == "1"
       delivery = Delivery.find(params[:order][:delivery_id])
         @order.delivery_postal_code = delivery.postal_code
         @order.delivery_address = delivery.address
         @order.delivery_name = delivery.destination
+  # 新しい配送先 
     elsif params[:order][:address_option] == "2"
       @order.order_postal_code = params[:order][:order_postal_code]
       @order.order_address = params[:order][:order_address]
       @order.order_name = params[:order][:order_name]
+    end
+    unless @order.valid?
+      flash.now[:danger] = "お届け先の内容に不備があります"
+      render :new
     end
   end
 

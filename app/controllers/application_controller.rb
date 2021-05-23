@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
-
   def after_sign_up_path_for(resource)
     customers_path
   end
@@ -12,7 +11,7 @@ class ApplicationController < ActionController::Base
     when Customer
       root_path
     when Admin
-      admin_top_path
+       admin_top_path
   end
   end
 

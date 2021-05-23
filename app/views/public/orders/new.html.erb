@@ -1,3 +1,14 @@
+<!--エラーメッセージ-->
+<% if @order.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+        <% @order.errors.full_messages.each do |add_error_sample| %>
+        <li><%= add_error_sample %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<!--エラーメッセージ-->
 <div class="container mb-auto">
   <div class="row">
     <div class="col-md-10 mx-auto">
@@ -50,3 +61,4 @@
   <% end %>
   </div>
   </div>
+
