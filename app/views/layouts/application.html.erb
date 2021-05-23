@@ -7,16 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   </head>
-
-  <body>
+<!--背景色を変更したい場合は下記のカラーコードを変更して下さい-->
+  <body style= "background-color: #CEF9DC">
     <%= render 'layouts/header' %>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <%= yield %>
     <%= render 'layouts/footer' %>
-    
+
     <!-- Initialize Swiper -->
     <script> //jsファイルの設定
       var swiper = new Swiper('.swiper-container', {
@@ -24,17 +24,17 @@
           slidesPerView:2,  //スライドを2つ（分）表示
           centeredSlides : true,  //アクティブなスライドを中央に表示
           effect: 'coverflow',  //スライドのエフェクトを coverflow に
-          
+
           autoplay: { //自動再生のスピード
            delay: 4000,
            speed : 3000,
           },
-  
+
        　　pagination: {  //ページネーションを表示
         　 el: '.swiper-pagination',
            clickable: true,  //アイコンをクリックすると対応するスライドに移動
        　　},
- 
+
           navigation: {  //ナビゲーションボタンを表示
            nextEl: '.swiper-button-next',
            prevEl: '.swiper-button-prev',
