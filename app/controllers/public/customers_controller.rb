@@ -7,7 +7,8 @@ class Public::CustomersController < ApplicationController
   def edit
     @customer = current_customer
   end
-
+  
+# 退会画面
   def unsubscribe
     @customer = Customer
   end
@@ -18,6 +19,7 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_path
   end
 
+# 退会
   def withdraw
     @customer = current_customer
     @customer.update(is_deleted: true)
@@ -25,11 +27,6 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def create
-    @customer = Customer.new(customer_params)
-    @customer.save
-    redirect_to products_path
-  end
 
   private
 
