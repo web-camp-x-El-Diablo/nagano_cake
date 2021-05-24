@@ -19,4 +19,8 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
+# 会員の検索
+  def self.search(column, value)
+    Customer.where(Customer.sanitize_sql(["#{column} LIKE ?", "%#{value}%"]))
+  end
 end

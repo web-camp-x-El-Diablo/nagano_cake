@@ -6,10 +6,10 @@ class Product < ApplicationRecord
   attachment :image, destroy: false
 
   validates :name, presence: true
-  validates :introduction, presence: true
+  validates :introduction, presence: true, length: { minimum: 10 }
   validates :price, presence: true
 
-  
+
 
   # 消費税込みの値段をコードで記載する際に使用
   def add_tax_price
