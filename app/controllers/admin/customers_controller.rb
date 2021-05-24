@@ -17,6 +17,15 @@ class Admin::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to admin_customer_path(@customer.id)
   end
+  
+  # customerの検索
+
+  def search
+    value = params[:vaule_customer]
+    column = params[:column_customer]
+    @customers = Customer.search(column, value).page(params[:page]).per(10)
+    render 'index'
+  end
 
     private
 

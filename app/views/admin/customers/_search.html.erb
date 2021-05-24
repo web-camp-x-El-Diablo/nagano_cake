@@ -1,0 +1,6 @@
+<!-- 検索フォーム -->
+<%= form_with url: admin_customers_search_path, method: :post, local: true do |f| %>
+  <%= f.search_field :value_customer, class: "form_control" %>
+  <%= f.select :column_customer, options_for_select("名前（姓）": "last_name", "名前（名）": "first_name"), {}, class: "custom_select" %>
+  <%= f.submit '検索' %>
+<% end %>

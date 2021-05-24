@@ -14,7 +14,7 @@
       <tr>
         <td>
           <%= link_to admin_order_path(order.id), method: :get, local:true do %>
-            <%= order.created_at %>
+            <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
           <% end %>
         </td>
         <td>
