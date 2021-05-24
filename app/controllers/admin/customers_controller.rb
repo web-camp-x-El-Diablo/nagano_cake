@@ -17,7 +17,7 @@ class Admin::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to admin_customer_path(@customer.id)
   end
-  
+
   # customerの検索
 
   def search
@@ -27,7 +27,7 @@ class Admin::CustomersController < ApplicationController
     render 'index'
   end
 
-    private
+  private
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :postal_code, :address, :telephone_number, :first_name_kana, :email, :is_deleted)

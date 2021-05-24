@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "homes#top"
   get "/about" => "homes#about", as: 'about'
 
   # 店側のルーティング
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'homes/top' => 'homes#top', as: 'top'
+    root 'homes#top'
     resources :homes, only: [:top] do
       collection do
         get 'search'
@@ -23,9 +24,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    root to: "homes#top"
     resource :customers, except: [:create]
-
     get '/orders/thanks' => "orders#thanks"
     post '/orders/confirm' => "orders#confirm"
     delete '/cart_products/destroy_all' => "cart_products#destroy_all"

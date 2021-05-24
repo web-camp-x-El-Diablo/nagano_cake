@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     when Customer
       root_path
     when Admin
-       admin_top_path
+      admin_root_path
   end
   end
 
