@@ -6,4 +6,7 @@ class Delivery < ApplicationRecord
   validates :address, presence: true
   validates :postal_code, presence: true
   validates :destination, presence: true
+
+
 end
+
