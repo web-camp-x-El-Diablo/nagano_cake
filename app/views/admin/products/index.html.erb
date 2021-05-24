@@ -1,7 +1,8 @@
 <!-- 商品一覧画面　-->
 <div class="container">
   <div class="row">
-    <div class="col-md-12" style="margin-top: 30px;">
+    <div class="col-md-12" style="margin-top: 10px;">
+      
       <div style= "margin: 20px 0 10px">
         <h4 class="genre-title">商品一覧</h4>
       </div>
@@ -22,35 +23,29 @@
             </tr>
           </thead>
           <tbody>
-            <% @products.each do |product| %>
-              <tr>
-                <td>
-                  <%= product.id %>
-                </td>
-                <td>
-                  <%=link_to product.name, admin_product_path(product.id) %>
-                </td>
-                <td>
-                  <%= product.price.to_s(:delimited) %>
-                </td>
-                <td>
-                  <%= product.genre.name %>
-                </td>
-                <td>
-                  <% unless product.sales_status %>
-                    <p class="true">販売中</p>
-                  <% else %>
-                    <p class="false">販売停止中</p>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.id %></td>
+              <td><%=link_to product.name, admin_product_path(product.id) %></td>
+              <td><%= product.price.to_s(:delimited) %></td>
+              <td><%= product.genre.name %></td>
+              <td>
+                <% unless product.sales_status %>
+                  <p class="true">販売中</p>
+                <% else %>
+                  <p class="false">販売停止中</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
           </tbody>
         </table>
+        
       <div class="pagination">
         <%= paginate @products %>
       </div>
       </div>
+      
     </div>
   </div>
 </div>
