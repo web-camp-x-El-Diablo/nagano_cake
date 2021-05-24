@@ -4,13 +4,13 @@
 <div class="row">
   <p class="col-md-2 mx-auto font-weight-bold"><span style="background-color:#C0C0C0">会員の⽅はこちらからログイン</span></p>
 </div>
-<%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
 
 <div class="row">
 <div class="mx-auto">
 
   <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
    <%= render "customers/shared/error_messages", resource: resource %>
+   <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
     <table class='table table-borderless'>
       <tr>
         <th><%= f.label :email, "メールアドレス" %></th>

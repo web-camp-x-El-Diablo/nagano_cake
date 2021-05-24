@@ -1,3 +1,12 @@
+<% if current_customer.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+        <% current_customer.errors.full_messages.each do |add_error_sample| %>
+        <li><%= add_error_sample %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div class='container'>
   <div class='row'>
     <div class="col-1"></div>
