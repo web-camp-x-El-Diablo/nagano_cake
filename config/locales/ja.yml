@@ -13,8 +13,8 @@ ja:
       postal_code: "郵便番号"
       address: "住所"
       telephone_number: "電話番号"
-      
-      
+
+
 
   enums:
     orders:
@@ -30,3 +30,11 @@ ja:
         before_starting: "製作待ち"
         now_processing: "製作中"
         finished: "製作完了"
+
+ja:
+  activerecord:
+    attributes:
+      delivery:
+        address: 住所
+        postal_code: 郵便番号
+        destination: 宛名
