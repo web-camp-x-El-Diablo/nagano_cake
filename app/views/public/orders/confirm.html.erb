@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
-      <h2 style="margin-top: 20px;">注文情報確認</h2>
+      <h2 style="margin-top: 20px;">注文情報確認</h2
+
       <!-- 注文情報のテーブル -->
       <table class="table table-bordered">
         <thead>
@@ -13,12 +14,14 @@
           </tr>
         </thead>
         <tbody>
+
           <!-- 注文情報の内容 -->
           <%= render 'public/orders/confirmination_table.html', cart_products: @cart_products %>
         </tbody>
       </table>
     </div>
    <div class="col-md-8">
+
       <!-- 金額のリスト -->
       <table class="table table-bordered">
         <% @total = 0 %>
@@ -33,6 +36,7 @@
   </div>
   <div class="row">
     <div class="col-sm-8">
+
       <!-- 宛先情報の確認 -->
       <table class="table table-borderless">
         <tr>
@@ -48,6 +52,8 @@
           </td>
         </tr>
       </table>
+
+      <!-- 注文情報送信フォーム -->
       <div class="col-sm-8 offset-8 order_confirmination">
       <%= form_with model: @order, url: orders_path, method: :post, local:true do |f| %>
         <%= f.hidden_field :payment_method, :value => @order.payment_method %>
