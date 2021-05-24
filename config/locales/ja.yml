@@ -37,10 +37,7 @@ ja:
         now_processing: "製作中"
         finished: "製作完了"
 
-ja:
-  activerecord:
-    attributes:
       delivery:
-        address: 住所
-        postal_code: 郵便番号
-        destination: 宛名
+        address: "住所"
+        postal_code: "郵便番号"
+        destination: "宛名"

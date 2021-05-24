@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
     @delivery_fee = 800
     @sum = 0
     @order_details.each do |order_detail|
-      @sum += (order_detail.subtotal * 1.1 * order_detail.amount).floor
+      @sum += (order_detail.subtotal * order_detail.amount).floor
     end
   end
 
@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
         @order.delivery_postal_code = delivery.postal_code
         @order.delivery_address = delivery.address
         @order.delivery_name = delivery.destination
-  # 新しい配送先 
+  # 新しい配送先
     elsif params[:order][:address_option] == "2"
       @order.order_postal_code = params[:order][:order_postal_code]
       @order.order_address = params[:order][:order_address]
