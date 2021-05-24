@@ -2,16 +2,16 @@
 <div class="contatiner">
   <div class="row">
     <div class="col-sm-10 col-md-8 col-lg-7 px- px-sm-0 mx-auto">
-      <!--詳細ページのタイトル-->
-      <div style= "margin: 30px 0 30px 90px">
-       <h4 class="genre-title">商品詳細</h4>
+
+      <div style= "margin: 30px 0 30px 60px">
+        <h4 class="genre-title">商品詳細</h4>
       </div>
-      <!--画像の設定-->
+
       <div class="product_body">
         <div class="product_image">
           <%= attachment_image_tag @product, :image,fallback: "no_image.jpg", size: "350x300"%>
         </div>
-        <!--テーブルで作成しました。販売ステータスの色が変わらないです-->
+
         <div class="col-md-7">
           <div class="admin_product_details">
             <table>
@@ -30,19 +30,12 @@
           </div>
           <button class="btn btn-success"><%= link_to "編集する", "/admin/products/#{@product.id}/edit", :style=>"color :white;" "text-decoration:none;" %></button>
         </div>
-        <!--<div class="product_detail">-->
-        <!--  <h4><%= @product.name %></h4>-->
-        <!--  <h4><%= @product.introduction %></h4>-->
-        <!--  <h4><%= @product.genre.name %></h4>-->
-        <!--  <h4><%= @product.add_tax_price.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</h4>-->
-        <!--  <h4><%= @product.sales_status ? "販売停止中" : "販売中"%></h4>-->
-        <!--  <button class="btn btn-success"><%= link_to "編集する", "/admin/products/#{@product.id}/edit"  %></button>-->
-        <!--</div>-->
       </div>
+
     </div>
   </div>
 </div>
 
-<!--td→thに変更すれば文字の大きさと太さが若干変化します。（thはタイトルなので）-->
+
 
 

@@ -1,3 +1,4 @@
+<!--エラーメッセージ-->
 <% if @genre.errors.any? %>
   <div class="alert alert-warning">
     <ul>
@@ -8,20 +9,28 @@
   </div>
 <% end %>
 
-<div style= "margin: 30px 0 30px 90px">
-  <p class="genre-title">ジャンル一覧・追加</p>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" style="margin-top: 10px;">
+      
+      <div style= "margin: 20px 0 10px">
+        <h4 class="genre-title">ジャンル編集</h4>
+      </div>
 
-<%= form_with model: @genre,:url => {:action => :update}, local: true do |f| %>
-<div style= "margin: 30px 0 30px 180px">
-  <div class="form-content">
-    <p>ジャンル名</p>
-    <div class="form-group">
-      <%= f.text_field :name %>
-    </div>
-    <div class="form-group">
-     <%= f.submit '変更を保存',class: 'btn btn-success' %>
+      <%= form_with model: @genre,:url => {:action => :update}, local: true do |f| %>
+      <div style= "margin: 30px 0 30px 180px">
+        <div class="form-content">
+          <p>ジャンル名</p>
+          <div class="form-group">
+            <%= f.text_field :name %>
+          </div>
+          <div class="form-group">
+            <%= f.submit '変更を保存',class: 'btn btn-success' %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
     </div>
   </div>
 </div>
-<% end %>
