@@ -1,12 +1,12 @@
+<!-- マイページ -->
 <div class="container" style="min-width: 300px;">
-
   <div class="row">
     <div class="col-md-10 mx-auto">
-
       <div class="mt-4 mb-4 bg-light d-inline-block">
         <h4 class="px-2 pt-2">マイページ</h4>
       </div>
 
+      <!-- 会員情報の表示 -->
       <div class="row">
         <div class="col-12 col-lg-8">
           <table class="table table-bordered mb-3">
@@ -54,38 +54,23 @@
         </div>
       </div>
 
+      <!-- 会員情報編集画面へのリンク -->
       <div class="d-flex pb-2">
         <h5 class="pt-2 mr-3" style="width: 90px;"><strong>登録情報</strong></h5>
           <%= link_to "編集する", edit_customers_path, class: "btn btn-success px-4" %>
       </div>
 
+      <!-- 配送先一覧ページへのリンク -->
       <div class="d-flex pb-3">
         <h5 class="pt-2 mr-3" style="width: 90px;"><strong>配送先</strong></h5>
         <%= link_to "一覧を見る", deliveries_path, class: "btn btn-primary px-4" %>
       </div>
 
+      <!-- 注文履歴一覧ページへのリンク -->
       <div class="d-flex">
         <h5 class="pt-2 mr-3" style="width: 90px;"><strong>注文履歴</strong></h5>
         <%= link_to "一覧を見る", orders_path, class: "btn btn-primary px-4" %>
       </div>
-
     </div>
   </div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
