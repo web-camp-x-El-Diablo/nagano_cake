@@ -1,10 +1,12 @@
+<!-- 会員一覧ページ -->
 <div class="container">
   <div class="row">
     <div class="col-md-12" style="margin-top: 10px;">
       <div style= "margin: 20px 0 10px">
         <h4 class="genre-title">会員一覧</h4>
       </div>
-    
+
+    <!-- 会員情報のテーブル -->
     <div class="row mx-auto pb-4">
       <table class="table w-75 mx-auto">
         <tr>
@@ -13,26 +15,33 @@
           <th>メールアドレス</th>
           <th>ステータス</th>
         </tr>
-    <% @customers.each do |customer|%>
-    　　<tr>
-    　　    <td><%= customer.id %></td>
-    　　    <td><%= link_to admin_customer_path(customer.id) do %>
-              <%= customer.last_name %>
-              <%= customer.first_name %><% end %>
-          </td>
-          <td><%= customer.email %></td>
-        <% if customer.is_deleted?%>
-    　　    <td class="text-danger">退会</td>
-    　　    <%else%>
-    　　    <td class="text-success">有効</td>
-    　　    <%end%>
-    　　</tr>
-    <% end %>
-    </table>
+        <% @customers.each do |customer|%>
+      　　<tr>
+      　　    <td><%= customer.id %></td>
+      　　    <td>
+      　　      <%= link_to admin_customer_path(customer.id) do %>
+                <%= customer.last_name %>
+                <%= customer.first_name %>
+              <% end %>
+            </td>
+            <td><%= customer.email %></td>
+            <% if customer.is_deleted?%>
+      　　      <td class="text-danger">退会</td>
+      　　    <%else%>
+      　　      <td class="text-success">有効</td>
+      　　    <%end%>
+      　　</tr>
+        <% end %>
+      </table>
     </div>
-      <div class="row justify-content-center">
+    <div class="row justify-content-center">
       </div>
     </div>
+  </div>
+
+  <!-- ページング -->
+  <div class="pagination">
+    <%= paginate @customers %>
   </div>
 </div>
 
