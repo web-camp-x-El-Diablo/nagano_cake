@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-md-12" style="margin-top: 10px;">
-      
+
       <div style= "margin: 20px 0 10px">
         <h4 class="genre-title">注文履歴詳細</h4>
       </div>
@@ -21,7 +21,7 @@
         </tr>
         <tr>
           <th>注文日</th>
-          <td> <%= @order.created_at %></td>
+          <td> <%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
         </tr>
         <tr>
           <th>配送先</th>
@@ -58,7 +58,7 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
-            <th>販売ステータス</th>
+            <th>製作ステータス</th>
           </tr>
         </thead>
         <tbody>
