@@ -2,6 +2,7 @@
 
 <div class="container">
   <div class="row">
+
     <div class="col-md-12" style="margin-top: 10px;">
       
       <div style= "margin: 20px 0 10px">
@@ -67,8 +68,8 @@
               <td><%= order_detail.product.name %></td>
               <td><%= (order_detail.subtotal).to_i.to_s(:delimited) %> 円</td>
               <td><%= order_detail.amount %> 個</td>
-              <td><%= (order_detail.subtotal * order_detail.amount * 1.1 ).to_i.to_s(:delimited) %> 円</td>
-              <% @sum += (order_detail.subtotal * order_detail.amount * 1.1 ).to_i  %>
+              <td><%= (order_detail.subtotal * order_detail.amount).to_i.to_s(:delimited) %> 円</td>
+              <% @sum += (order_detail.subtotal * order_detail.amount).to_i  %>
               <td>
                 <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail),local: true) do |f| %>
                   <%= f.select :production_status, OrderDetail.production_statuses.keys.to_a %>
