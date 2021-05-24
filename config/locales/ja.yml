@@ -1,7 +1,7 @@
 ja:
  activerecord:
   attributes:
-   customer:
+    customer:
       email: "メールアドレス"
       encrypted_password: "パスワード"
       password_confirmation: "確認用パスワード"
@@ -14,14 +14,13 @@ ja:
       address: "住所"
       telephone_number: "電話番号"
 
-  attributes:
     genre:
      name: "ジャンル名"
-     
+
     product:
-     name: 商品名
-     introduction: 商品説明
-     price: 税込価格
+     name: "商品名"
+     introduction: "商品説明"
+     price: "税込価格"
 
   enums:
     orders:
@@ -31,8 +30,8 @@ ja:
         processing: "制作中"
         preparering_delivery: "発送準備中"
         delivered: "発送済み"
-    order_details:
-      production_status:
+        order_details:
+        production_status:
         unable: "製作不可"
         before_starting: "製作待ち"
         now_processing: "製作中"
