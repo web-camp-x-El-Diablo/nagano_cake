@@ -28,7 +28,7 @@
         <th class="bg-light">送料</th>
         <td><%= @delivery_fee %> 円</td>
         <th class="bg-light">商品合計</th>
-        <td><%= @sum %> 円</td>
+        <td><%= (@sum).to_s(:delimited) %> 円</td>
         <th class="bg-light">請求金額</th>
         <td><%= (@total = @sum + @delivery_fee).to_i.to_s(:delimited) %> 円</td>
       </table>
