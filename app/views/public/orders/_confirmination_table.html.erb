@@ -1,0 +1,14 @@
+<!-- 注文情報 -->
+<% @sum = 0 %>
+<% @cart_products.each do |cart_product| %>
+  <tr class="text-center">
+    <td>
+      <%= attachment_image_tag cart_product.product, :image, size: "70x70", class: "product_image", fallback: "no_image.jpg" %>
+      <%= cart_product.product.name %>
+    </td>
+    <td><%= (cart_product.product.price * 1.1).to_i.to_s(:delimited) %> 円</td>
+    <td><%= cart_product.amount %> 個</td>
+    <td><%= (cart_product.amount * (cart_product.product.price * 1.1)).to_i.to_s(:delimited) %> 円</td>
+    <% @sum += (cart_product.product.price * cart_product.amount * 1.1 ).to_i  %>
+  </tr>
+<% end %>

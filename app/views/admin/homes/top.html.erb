@@ -1,2 +1,23 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<!-- 管理者トップページ -->
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12" style="margin-top: 10px;">
+      
+      <div style= "margin: 20px 0 10px">
+        <h4 class="genre-title">注文履歴一覧</h4>
+      </div>
+      <div class="table" style="margin-top:20px;">
+        <!-- 注文一覧のテーブル -->
+
+        <%= render 'admin/homes/orders', orders: @orders %>
+      </div>
+    </div>
+  </div>
+
+  <!-- ページング -->
+  <div class="pagination">
+    <%= paginate @orders %>
+  </div>
+</div>

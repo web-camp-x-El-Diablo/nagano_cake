@@ -1,2 +1,53 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+ <div class="container">
+   <div class="row">
+     <div class="px-5 mx-auto text-center">
+       <h1 class="top-head" style="font-size: 40px; margin-top: 25px; font-family: 'Pattaya', sans-serif; color: #FF9933">Welcome To NaganoCake!!</h1>
+     </div>
+   </div>
+ </div>
+
+
+ <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><%= image_tag 'top_image.jpg' ,size: "600x400"%></div>
+      <div class="swiper-slide"><%= image_tag 'top_image1.jpeg',size: "600x400" %></div>
+      <div class="swiper-slide"><%= image_tag 'top_image2.jpg',size: "600x400" %></div>
+      <div class="swiper-slide"><%= image_tag 'top_image3.jpg',size: "600x400" %></div>
+      <div class="swiper-slide"><%= image_tag 'top_image4.jpg',size: "600x400" %></div>
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+<div class="center-block">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <!--新着商品-->
+      <div class="new-product-content">
+        <h2 class="new-product-title">★新着商品★</h2>
+
+        <!--eachで取り出す-->
+        <div class="row">
+          <% @products.each do |product| %>
+           <div class="col-md-3 text-center">
+        <!--商品画像タグ-->
+             <div class="product_image">
+               <%= link_to product_path(product) do %>
+               <%= attachment_image_tag product, :image,fallback: "no_image.jpg", size: "155x100", style: "border-radius:20px"%>
+               <% end %>
+             </div>
+        <!--商品名タグ-->
+             <div class="product-name"><%= product.name %></div>
+        <!--値段タグ-->
+             <div class="product-price">¥<%= product.price.to_s(:delimited) %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div style="text-align: right;"><u><span><%= link_to "全ての商品を見る >", products_path %></span></u></div>
+    </div>
+  </div>
+</div>
+

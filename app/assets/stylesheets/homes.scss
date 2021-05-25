@@ -1,3 +1,88 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container{
+
+}
+.main-visual-content{
+  width: 800px;
+  height: 400px;
+  background-image: url(top_image.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-color: rgba(255,255,255,0.1);
+  margin-top: 30px;
+}
+
+.new-product-content{
+  width: 800px;
+  height: auto;
+}
+
+.main-visual-text {
+  position: absolute;
+  margin: auto;
+  top:  50%;                     /* 位置指定 */
+  left:  50%;                    /* 位置指定 */
+  transform: translateY(-50%) translateX(-50%);      /* 位置指定 */
+  width: 600px;
+  height: 200px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.new-product-title{
+  margin: 40px 0 30px 0;
+  font-weight: bold;
+}
+
+.about-visual{
+  width: 800px;
+  height: 400px;
+  background-image: url(about.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-color: rgba(255,255,255,0.1);
+  margin-top: 30px;
+  border-radius: 30px;
+}
+
+.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    
+    .fa-facebook-square{
+      color: #315096;
+    }
+    
+    .fa-instagram-square{
+      color: #e1306c;
+    }
+    
+    .fa-twitter-square{
+      color: #55acee;
+    }

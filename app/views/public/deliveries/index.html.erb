@@ -1,0 +1,60 @@
+ <% if @delivery.errors.any? %>
+  <div>
+    <ul style="color: red">
+      <% @delivery. errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+      <% end %>
+      </ul>
+  </div>
+<% end %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-3 my-5 title" >
+      <h4>配送先登録/一覧</h4>
+    </div>
+  </div>
+  <%= form_with(model: @delivery, :url => {:controller => "deliveries"}, local: true) do |f| %>
+  <table>
+    <tr>
+      <td><%= f.label :郵便番号（ハイフンなし） %></td>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+  
+    <tr>
+      <td><%= f.label :住所 %></td>
+      <td><%= f.text_field :address ,:size => "50*50" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :宛名 %></td>
+      <td><%= f.text_field :destination %></td>
+      <td>&emsp;<%= f.submit "新規登録" ,class:"btn btn-success" %></td>
+    </tr>
+  </table>
+  <% end %>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td class="table-secondary">郵便番号</td>
+        <td class="table-secondary">住所</td>
+        <td class="table-secondary">宛名</td>
+        <td class="table-secondary"></td>
+      </tr><br>
+  
+       <%@deliveries.each do |f| %>
+  
+      <tr>
+        <td><%= f.postal_code %></td>
+      　<td><%= f.address %></td>
+      　<td><%= f.destination %></td>
+        <td>
+          <%= link_to "編集する", edit_delivery_path(f.id), class: "btn btn-primary" %>&emsp;
+          <%= link_to "削除する", delivery_path(f.id), method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  
+  
+  

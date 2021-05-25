@@ -1,0 +1,43 @@
+ja:
+ activerecord:
+  attributes:
+    customer:
+      email: "メールアドレス"
+      encrypted_password: "パスワード"
+      password_confirmation: "確認用パスワード"
+      password: "パスワード"
+      last_name: "(姓)"
+      last_name_kana: "(セイ)"
+      first_name: "(名)"
+      first_name_kana: "(メイ)"
+      postal_code: "郵便番号"
+      address: "住所"
+      telephone_number: "電話番号"
+
+    genre:
+     name: "ジャンル名"
+
+    product:
+     name: "商品名"
+     introduction: "商品説明"
+     price: "税込価格"
+
+  enums:
+    orders:
+      order_status:
+        waiting_for_payment: "入金待ち"
+        confirm_payment: "入金確認"
+        processing: "制作中"
+        preparering_delivery: "発送準備中"
+        delivered: "発送済み"
+        order_details:
+        production_status:
+        unable: "製作不可"
+        before_starting: "製作待ち"
+        now_processing: "製作中"
+        finished: "製作完了"
+
+      delivery:
+        address: "住所"
+        postal_code: "郵便番号"
+        destination: "宛名"

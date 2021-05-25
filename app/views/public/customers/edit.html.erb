@@ -1,0 +1,98 @@
+<% if current_customer.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+        <% current_customer.errors.full_messages.each do |add_error_sample| %>
+        <li><%= add_error_sample %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-1"></div>
+    <h2>会員情報編集</h2>
+  </div>
+
+  <div class="row">
+   <%= form_with model: current_customer, url: customers_path, local: true do |f| %>
+    <table>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :氏名 %></th>
+          <td><%= f.text_field :last_name, class: "form-control name" %></td>
+          <td><%= f.text_field :first_name, class: "form-control name" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :フリガナ %></th>
+          <td><%= f.text_field :last_name_kana, class: "form-control name" %></td>
+          <td><%= f.text_field :first_name_kana, class: "form-control name" %></td>
+      </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :郵便番号 %></th>
+          <td><%= f.text_field :postal_code, class: "form-control name" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :住所 %></th>
+          <td colspan="2"><%= f.text_field :address, class: "form-control name" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :電話番号 %></th>
+          <td><%= f.text_field :telephone_number, class: "form-control introduction" %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :メールアドレス %></th>
+          <td><%= f.text_field :email, class: "form-control introduction" %></td>
+          <td></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th></th>
+          <td><%= f.submit "編集内容を保存",class: "btn btn-success" %></td>
+          <td><%= link_to '退会する', customers_unsubscribe_path ,class: 'btn btn-danger' %></td>
+        </div>
+      </tr>
+    </table>
+  <% end %>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

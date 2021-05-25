@@ -1,2 +1,64 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h4 class="customer-show">
+        <%= @customers.last_name %><%= @customers.first_name %>
+        さんの会員情報
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-1">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class= "text-center">会員ID</td>
+            <td class= "text-center"><%= @customers.id %></td>
+          </tr>
+          <tr>
+            <td class= "text-center">氏名</td>
+            <td class= "text-center"><%= @customers.last_name %><%= @customers.first_name %></td>
+          </tr>
+          <tr>
+            <td class= "text-center">フリガナ</td>
+            <td class= "text-center"><%= @customers.last_name_kana %><%= @customers.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td class= "text-center">郵便番号</td>
+            <td class= "text-center"><%= @customers.postal_code %></td>
+          </tr>
+          <tr>
+            <td class= "text-center">住所</td>
+            <td class= "text-center"><%= @customers.address %></td>
+          </tr>
+          <tr>
+            <td class= "text-center">電話番号</td>
+            <td class= "text-center"><%= @customers.telephone_number %></td>
+          </tr>
+          <tr>
+            <td class= "text-center">メールアドレス</td>
+            <td class= "text-center"><%= @customers.email  %></td>
+          </tr>
+          <tr>
+            <td class= "text-center">会員ステータス</td>
+            <td class= "text-center">
+              <%= @customers.is_deleted ? "無効" : "有効" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-3">
+      <%= link_to '編集する', edit_admin_customer_path(@customers.id), class: 'btn btn-success' %>
+    </div>
+    <div class="col-3">
+      <%= link_to '注文履歴一覧を見る', admin_order_path(@customers.id), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+
+
+

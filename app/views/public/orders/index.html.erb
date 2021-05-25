@@ -1,0 +1,12 @@
+<div class="contatiner">
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+      <h3 style="margin: 20px 0;">注文履歴一覧</h3>
+
+      <!-- 注文履歴一覧のテーブル -->
+      <table class='table table-bordered'>
+        <%= render 'public/orders/order_logs', orders: @orders %>
+      </table>
+    </div>
+  </div>
+</div>

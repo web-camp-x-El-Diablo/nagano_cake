@@ -1,3 +1,55 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//
+
+.size {
+  font-size: 2em;
+}
+
+// 画像サイズ変更に伴いコメントアウト
+.product {
+  // display: flex;
+  // margin: 30px auto;
+  justify-content: center;
+  align-items: center;
+}
+.product_body{
+  display: flex;
+  margin: 20px auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_image {
+  margin: 0;
+  padding: 0;
+}
+
+.product_details {
+  margin-left: 50px;
+  margin-top: 100px;
+  padding: 0;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.order {
+  display: inline-block;
+}
+
+.admin_product_details {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.space{
+  width: 130px;
+}
+
+.space-text{
+  width: 400px;
+}
+

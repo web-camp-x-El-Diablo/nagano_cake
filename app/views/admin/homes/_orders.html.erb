@@ -1,0 +1,32 @@
+<!-- 注文一覧のテーブル -->
+
+<table class='table table-hover table-inverse'>
+  <thead class="table-list">
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+      <tr>
+        <td>
+          <%= link_to admin_order_path(order.id), method: :get, local:true do %>
+            <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+          <% end %>
+        </td>
+        <td>
+          <%= order.customer.last_name %> <%= order.customer.first_name %>
+        </td>
+        <td>
+          <%= order.order_details.group(:amount).count.reduce(0) {|sum, (key, value)| sum += key * value} %>
+        </td>
+        <td>
+          <%= order.order_status %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

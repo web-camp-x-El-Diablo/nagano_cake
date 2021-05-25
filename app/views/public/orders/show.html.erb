@@ -1,0 +1,86 @@
+<!-- 注文履歴詳細ページ -->
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h4 class="customer-index">注文情報</h4>
+    </div>
+  </div>
+
+  <!-- 注文確定時の情報 -->
+  <div class="row">
+    <div class="col-7">
+      <table class="table table-bordered">
+       <tbody>
+          <tr>
+            <td class="table-secondary">注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">配送先</td>
+            <td>〒<%= @order.delivery_postal_code %>
+                <%= @order.delivery_address %></br>
+                <%= @order.delivery_name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-secondary">支払方法</td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+         <tr>
+            <td class="table-secondary">注文ステータス</td>
+            <td><%= @order.order_status %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 金額の情報 -->
+    <div class="col-3">
+      <p>請求情報<p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-secondary">商品合計</td>
+            <td><%= @sum.to_s(:delimited) %> 円</td>
+          </tr>
+          <tr>
+            <td class="table-secondary">配送料</td>
+          <td><%= @delivery_fee %> 円</td>
+          </tr>
+          <tr>
+            <td class="table-secondary">ご請求額</td>
+            <td><%= (@sum + @delivery_fee).to_s(:delimited) %> 円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 注文商品と金額 -->
+  <div class="row">
+    <div class="col-8">
+      <p>注文内容<p>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>個数</th>
+          <th>小計</th>
+      </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag order_detail.product, :image, size: "50x50" %>
+              <%= order_detail.product.name %>
+            </td>
+            <td><%= ((order_detail.product.price * 1.1).floor).to_s(:delimited) %> 円</td>
+            <td><%= order_detail.amount %> 個</td>
+            <td><%= ((order_detail.product.price * 1.1).floor * order_detail.amount).to_s(:delimited) %> 円</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

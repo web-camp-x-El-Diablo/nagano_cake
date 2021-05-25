@@ -1,0 +1,15 @@
+<li style="padding: 10px; margin-bottom: 10px; margin-right: 100px; color: #fff">
+  ようこそ、<%= current_customer.last_name %>さん ！
+</li>
+<li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
+  <%= link_to "マイページ", customers_path, class: 'text-light' %>
+</li>
+<li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
+  <%= link_to "商品一覧", products_path, class: 'text-light' %>
+</li>
+<li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
+  <%= link_to "カート", cart_products_path, class: 'text-light' %>
+</li>
+<li style="padding: 10px; margin-bottom: 10px; margin-right: 20px; border: 1px solid #fff; border-radius: 10px;">
+  <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete,class: 'text-light'  %>
+</li>
